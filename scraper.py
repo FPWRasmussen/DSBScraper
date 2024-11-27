@@ -22,14 +22,12 @@ def extract_table_data(soup):
 
         if year_month_header and year_month_header.text.strip() in str((np.arange(2014, 2025))):
             year = year_month_header.text.strip()
-            print(year)
                 
         elif year_month_header and year_month_header.text.strip() in [
             'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 
             'Juli', 'August', 'September', 'Oktober', 'November', 'December'
         ]:
             month = year_month_header.text.strip()
-            print(month)
             # Find corresponding table
             table = section.find('table')
             if table:
@@ -47,7 +45,6 @@ def extract_table_data(soup):
             cells = row.find_all('td')
             if len(cells) == 4:
                 if "<strong>" in str(cells[0]):                 # Check if route contains a <strong> tag
-                    print("SKIPPED")
                     skip_rows = True
                     continue
                 
@@ -56,9 +53,6 @@ def extract_table_data(soup):
 
                 # Clean the data
                 route = re.sub(r'\s+', ' ', cells[0].text.strip())
-                # route = route.replace('/', '-')  # Replace forward slash with dash
-                # route = re.sub(r'[-/]+', '-', route)  # Normalize any combination of dashes and slashes
-                # route = route.replace(' - ', '-').replace(' -', '-').replace('- ', '-')  # Normalize spaces around dashes
                 route = route.replace('/ ', '/')
                 if route in [
                 "København - København Lufthavn (CPH Lufthavn)",
@@ -92,9 +86,3 @@ def extract_table_data(soup):
     # Save to CSV
     df.to_csv('train_punctuality_data.csv', index=False)
     return df
-
-
-
-if __name__ == "__main__":
-    # Usage:
-    df = extract_table_data(soup)

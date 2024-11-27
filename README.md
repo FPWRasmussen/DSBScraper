@@ -1,6 +1,6 @@
 # DSB Train Punctuality Dashboard
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dsb-punctuality-dashboard.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dsbscraper.streamlit.app)
 
 An interactive dashboard that visualizes punctuality data from DSB (Danish State Railways) for both regional/long-distance trains and S-trains. The dashboard provides real-time insights into train performance across different routes in Denmark.
 
@@ -19,7 +19,7 @@ An interactive dashboard that visualizes punctuality data from DSB (Danish State
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/dsb-punctuality-dashboard.git
+git clone https://github.com/FPWRasmussen/DSBScraper.git
 cd dsb-punctuality-dashboard
 ```
 
