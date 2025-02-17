@@ -1,9 +1,11 @@
 import re
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+
 
 def get_soup(url: str) -> BeautifulSoup:
     with requests.Session() as s:
@@ -19,8 +21,7 @@ def extract_table_data(soup):
     for section in soup.find_all('section'):
 
         year_month_header = section.find('h2')
-
-        if year_month_header and year_month_header.text.strip() in str((np.arange(2014, 2025))):
+        if year_month_header and year_month_header.text.strip() in str(np.arange(2014, datetime.now().year + 1)):
             year = year_month_header.text.strip()
                 
         elif year_month_header and year_month_header.text.strip() in [
